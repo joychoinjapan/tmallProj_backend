@@ -16,6 +16,7 @@ public class Product {
     private float promotePrice;
     private int stock;
     private Date createDate;
+    private Category category;
     private int id;
     //从商品展示图片集合中取出第一张图片productSingleImages作为产品的默认图片
     private ProductImage firstProductImage;
@@ -131,5 +132,13 @@ public class Product {
 
     public void setSaleCount(int saleCount) {
         this.saleCount = saleCount;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
