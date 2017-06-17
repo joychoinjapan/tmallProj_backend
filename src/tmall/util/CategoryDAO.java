@@ -1,8 +1,6 @@
-package util;
+package tmall.util;
 
-import com.sun.tools.classfile.ConstantPool;
 import tmall.bean.Category;
-import util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

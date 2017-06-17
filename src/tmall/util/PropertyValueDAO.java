@@ -1,9 +1,5 @@
-package util;
+package tmall.util;
 
-import com.sun.org.apache.regexp.internal.RE;
-import sun.tools.jconsole.ConnectDialog;
-import sun.tools.jconsole.VariableGridLayout;
-import sun.util.resources.cldr.dz.CalendarData_dz_BT;
 import tmall.bean.Product;
 import tmall.bean.Property;
 import tmall.bean.PropertyValue;

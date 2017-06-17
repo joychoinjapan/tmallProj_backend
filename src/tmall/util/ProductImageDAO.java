@@ -1,6 +1,5 @@
-package util;
+package tmall.util;
 
-import com.sun.org.apache.regexp.internal.RE;
 import tmall.bean.Product;
 import tmall.bean.ProductImage;
 
@@ -81,7 +80,8 @@ public class ProductImageDAO {
             ResultSet rs=s.executeQuery(sql);
             if(rs.next()){
                 String type=rs.getString("type");
-                Product product=new ProductDao().get(pid);
+                int pid=rs.getInt("pid");
+                Product product=new ProductDAO().get(pid);
                 bean.setId(id);
                 bean.setProduct(product);
                 bean.setType(type);

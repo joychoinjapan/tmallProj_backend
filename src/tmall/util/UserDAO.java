@@ -1,4 +1,4 @@
-package util;/**
+package tmall.util;/**
  * Created by baobaochu on 2017/6/13.
  */
 

@@ -1,8 +1,6 @@
-package util;
+package tmall.util;
 
-import javafx.embed.swt.SWTFXUtils;
 import tmall.bean.Product;
-import tmall.bean.Property;
 import tmall.bean.Review;
 import tmall.bean.User;
 
@@ -108,7 +106,7 @@ public class ReviewDAO {
                 Date createDate = DateUtil.t2d(rs.getTimestamp("createDate"));
                 String content=rs.getString("content");
 
-                Product product=new ProductDAO.get(pid);
+                Product product=new ProductDAO().get(pid);
                 User user=new UserDAO().get(uid);
                 bean.setId(id);
                 bean.setContent(content);
@@ -123,49 +121,45 @@ public class ReviewDAO {
     public List<Review> list(int pid) {
         return list(pid, 0, Short.MAX_VALUE);
     }
-
-    public List<Review> list(int pid, int start, int count) {
-        List<Review> beans = new ArrayList<Review>();
-
-        String sql = "select * from Review where pid = ? order by id desc limit ?,? ";
-
-        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
-
-            ps.setInt(1, pid);
-            ps.setInt(2, start);
-            ps.setInt(3, count);
-
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Review bean = new Review();
-                int id = rs.getInt(1);
-
-                int uid = rs.getInt("uid");
-                Date createDate = DateUtil.t2d(rs.getTimestamp("createDate"));
-
-                String content = rs.getString("content");
-
-                Product product = new ProductDAO().get(pid);
-                User user = new UserDAO().get(uid);
-
+    public List<Review> list(int pid,int start,int count){
+        List<Review> beans=new ArrayList<Review>();
+        String sql="select * from Review where pid = ? order by id desc limit ?,?";
+        try(Connection c=DBUtil.getConnection();PreparedStatement ps=c.prepareStatement(sql);){
+            ps.setInt(1,pid);
+            ps.setInt(2,start);
+            ps.setInt(3,count);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                Review bean=new Review();
+                Date createDate=DateUtil.t2d(rs.getTimestamp("createDate"));
+                int id=rs.getInt(1);
+                int uid=rs.getInt("uid");
+                String content=rs.getString("content");
+                User user=new UserDAO().get(uid);
+                bean.setId(id);
+                bean.setUser(user);
+                Product product=new ProductDAO().get(id);
+                bean.setProduct(product);
                 bean.setContent(content);
                 bean.setCreateDate(createDate);
-                bean.setId(id);
-                bean.setProduct(product);
-                bean.setUser(user);
                 beans.add(bean);
-            }
-        } catch (SQLException e) {
 
+            }
+
+
+
+        }catch (SQLException e){
             e.printStackTrace();
         }
         return beans;
     }
 
+
+
+
     public boolean isExist(String content,int pid){
         String sql="select * from Review where content = ? and pid = ?";
-        try(Connection c=DBUtil.getConnection();PreparedStatement ps=c.prepareStatement();){
+        try(Connection c=DBUtil.getConnection();PreparedStatement ps=c.prepareStatement(sql);){
             ps.setString(1,content);
             ps.setInt(2,pid);
             ResultSet rs=ps.executeQuery();

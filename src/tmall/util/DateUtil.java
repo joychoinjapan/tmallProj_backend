@@ -1,4 +1,4 @@
-package util;
+package tmall.util;
 /**
  * 主要是用于java.util.Date类与java.sql.Timestamp 类的互相转换。
  *

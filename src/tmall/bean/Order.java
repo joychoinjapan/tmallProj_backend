@@ -1,9 +1,10 @@
-package tmall.bean;/**
- * Created by baobaochu on 2017/6/12.
- */
+package tmall.bean;
+
 
 import java.util.Date;
 import java.util.List;
+
+import tmall.util.OrderDAO;
 
 /**
  * 订单，与订单项是一对多关系
@@ -15,7 +16,7 @@ public class Order {
     private String orderCode;
     private String address;
     private String post;
-    private String reciever;
+    private String receiver;
     private String mobile;
     private String userMessage;
     private Date createDate;
@@ -83,12 +84,12 @@ public class Order {
         this.post = post;
     }
 
-    public String getReciever() {
-        return reciever;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setReciever(String reciever) {
-        this.reciever = reciever;
+    public void setReceiver(String reciever) {
+        this.receiver = reciever;
     }
 
     public String getMobile() {
