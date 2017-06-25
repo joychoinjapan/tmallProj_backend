@@ -36,7 +36,7 @@ public class PropertyValueDAO {
     public void add(PropertyValue bean){
         String sql="inser into PropertyValue values(null,?,?,?)";
 
-        try(Connection c=DBUtil.getConnection(); PreparedStatement ps=c.prepareStatement();){
+        try(Connection c=DBUtil.getConnection(); PreparedStatement ps=c.prepareStatement(sql);){
             ps.setInt(1,bean.getProduct().getId());
             ps.setInt(2,bean.getProperty().getId());
             ps.setString(3,bean.getValue());

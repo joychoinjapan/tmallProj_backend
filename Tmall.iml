@@ -19,5 +19,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="commons-fileupload-1.2.2" level="project" />
+    <orderEntry type="library" name="commons-io-1.4" level="project" />
+    <orderEntry type="library" name="commons-lang-2.5" level="project" />
+    <orderEntry type="library" name="jstl" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.0.8-bin" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="spring-core-3.2.0.M1" level="project" />
+    <orderEntry type="library" name="spring-web-3.2.0.M1" level="project" />
+    <orderEntry type="library" name="standard" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>

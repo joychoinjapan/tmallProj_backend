@@ -7,7 +7,17 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Tmall" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-fileupload-1.2.2" />
+          <element id="library" level="project" name="commons-io-1.4" />
+          <element id="library" level="project" name="jstl" />
+          <element id="library" level="project" name="mysql-connector-java-5.0.8-bin" />
+          <element id="library" level="project" name="spring-core-3.2.0.M1" />
+          <element id="library" level="project" name="spring-web-3.2.0.M1" />
+          <element id="library" level="project" name="standard" />
+        </element>
       </element>
+      <element id="library" level="project" name="commons-fileupload-1.2.2" />
     </root>
   </artifact>
 </component>
