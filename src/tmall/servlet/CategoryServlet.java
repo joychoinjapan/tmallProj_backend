@@ -1,5 +1,6 @@
 package tmall.servlet;
 
+import tmall.bean.Category;
 import tmall.util.Page;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by baobaochu on 2017/6/25.
@@ -39,6 +41,14 @@ public class CategoryServlet extends BaseBackServlet {
 
     @Override
     public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
-        return null;
+        List<Category> cs=categoryDAO.list(page.getStart(),page.getCount());
+        int total=categoryDAO.getTotal();
+        page.setTotal(total);
+
+        request.setAttribute("thecs",cs);
+        request.setAttribute("page",page);
+        return "admin/listCategory.jsp";
+
+
     }
 }

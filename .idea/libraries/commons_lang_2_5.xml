@@ -2,12 +2,6 @@
   <library name="commons-lang-2.5">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../lib-0/commons-lang-2.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../lib-0/jstl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../lib-0/mysql-connector-java-5.0.8-bin.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../lib-0/servlet-api.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../lib-0/spring-core-3.2.0.M1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../lib-0/spring-web-3.2.0.M1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../lib-0/standard.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
