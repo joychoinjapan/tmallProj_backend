@@ -9,7 +9,7 @@
 <script>
 	$(function () {
 		$("#addForm").submit(function () {
-		    //如果是输入值为空
+		    //如果是输入值为空，则按照header.jsp，跳出第二个参数值+不能为空的提示。
 			if(!checkEmpty("name","分类名称"))
 			    return false;
 			if(!checkEmpty("categoryPic","分类图片"))

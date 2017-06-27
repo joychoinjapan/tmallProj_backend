@@ -90,7 +90,7 @@ public class CategoryDAO {
         }
         return bean;
     }
-//    分页查询
+//    分页查询,取得从第start+1开始的数据，最多取得count条
     public List<Category> list(int start,int count){
         List<Category> beans=new ArrayList<Category>();
         String sql="select * from Category order by id desc limit ?,?";
