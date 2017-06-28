@@ -98,18 +98,21 @@ public abstract class BaseBackServlet extends HttpServlet {
               while (iter.hasNext()){
                   FileItem item=(FileItem)iter.next();
                   if(!item.isFormField()){
+                      //输入流
                       is=item.getInputStream();
 
                   }else {
                       String paramName=item.getFieldName();
                       String paramValue=item.getString();
                       paramValue= new String(paramValue.getBytes("ISO-8859-1"), "UTF-8");
+                      //参数名
                       params.put(paramName,paramValue);
                   }
               }
           }catch (Exception e){
               e.printStackTrace();
           }
+          //返回输入流
           return is;
 
         }
