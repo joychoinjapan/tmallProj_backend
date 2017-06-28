@@ -32,7 +32,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                 <span aria-hidden="true">‹</span>
             </a>
         </li>
-        <%--中间页超链--%>
+        <%--中间页超链,这一部分后续还会用到--%>
         <c:forEach begin="0" end="${page.totalPage-1}" varStatus="status">
 
             <c:if test="${status.count*page.count-page.start<=20&&status.count-page.start>=-10}">
