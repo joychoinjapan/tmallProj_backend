@@ -14,6 +14,7 @@
 			    return false;
 			if(!checkEmpty("categoryPic","分类图片"))
 			    return false;
+			return true;
         })
     })
 </script>
@@ -63,7 +64,11 @@
 		<%@include file="../include/admin/adminPage.jsp" %>
 	</div>
 
-	<%--新增分类的对话框，含有输入新增分类名和上传图片--%>
+	<%--新增分类的对话框，含有输入新增分类名和上传图片
+	说明：	1.form的action="admin_category_add"，会导致访问CategoryServlet的add()方法
+			2.method="post" 用于保证中文的正确提交
+			3. 必须有enctype="multipart/form-data"，这样才能上传文件
+			4. accept="image/*" 这样把上传的文件类型限制在了图片 --%>
 	<div class="panel panel-warning addDiv">
 		<div class="panel-heading">新增分类</div>
 		<div class="panel-body">
