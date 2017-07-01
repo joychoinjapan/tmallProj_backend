@@ -58,6 +58,7 @@ public class CategoryDAO {
         try(Connection c = DBUtil.getConnection();PreparedStatement ps=c.prepareStatement(sql);){
             ps.setString(1,bean.getName());
             ps.setInt(2,bean.getId());
+            ps.execute();
         }catch (SQLException e){
             e.printStackTrace();
         }

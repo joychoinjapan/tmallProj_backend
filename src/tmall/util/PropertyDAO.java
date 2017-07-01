@@ -19,7 +19,7 @@ public class PropertyDAO {
     public int getTotal(int cid){
         int total=0;
         try(Connection c=DBUtil.getConnection(); Statement s=c.createStatement()){
-            String sql="select count(*) from property where id = "+cid;
+            String sql="select count(*) from property where cid = "+cid;
             ResultSet rs=s.executeQuery(sql);
             while (rs.next()){
                 total=rs.getInt(1);
@@ -43,6 +43,7 @@ public class PropertyDAO {
             if(rs.next()){
                 int id=rs.getInt(1);
                 bean.setId(id);
+                System.out.println("插入成功");
             }
 
         }catch (SQLException e){
@@ -102,27 +103,34 @@ public class PropertyDAO {
 
     }
     //根据属性id获取属性
-    public Property get(int id){
-        Property bean=null;
+    public Property get(int id) {
+        Property bean = new Property();
 
-        try(Connection c=DBUtil.getConnection();Statement s=c.createStatement();){
-            String sql="select * from property where id = "+id;
-            ResultSet rs=s.executeQuery(sql);
-            if(rs.next()){
-                String name=rs.getString("name");
-                int cid=rs.getInt("cid");
+        try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
+            String sql = "select * from property where id = " + id;
+            ResultSet rs = s.executeQuery(sql);
+            if (rs.next()) {
+                String name = rs.getString("name");
+                int cid = rs.getInt("cid");
                 bean.setName(name);
-                Category category=new CategoryDAO().get(cid);
+                Category category = new CategoryDAO().get(cid);
                 bean.setCategory(category);
                 bean.setId(id);
             }
 
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return bean;
 
+    }
+
+
+    //通过分类的id搜索当前分类的所有属性
+    public List<Property>list(int cid){
+
+        return list(cid,0,Short.MAX_VALUE);
     }
     //查询分页
     public List<Property> list(int cid,int start,int count){
@@ -135,7 +143,7 @@ public class PropertyDAO {
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
                 Property bean=new Property();
-                int id=rs.getInt("1");
+                int id=rs.getInt(1);
                 String name=rs.getString("name");
                 Category category=new CategoryDAO().get(cid);
                 bean.setId(id);
@@ -149,10 +157,7 @@ public class PropertyDAO {
         return beans;
     }
 
-    //通过分类的id搜索当前分类的所有属性
-    public List<Property>list(int cid){
-        return list(cid,0,Short.MAX_VALUE);
-    }
+
 
 
 

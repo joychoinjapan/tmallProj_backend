@@ -32,7 +32,7 @@ public class Page {
             this.count = count;
         }
 
-        public boolean isHasPrevious(){
+        public boolean isHasPreviouse(){
             if(start==0)
                 return false;
             return true;
