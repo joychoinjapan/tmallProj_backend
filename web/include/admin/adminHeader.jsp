@@ -6,15 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!DOCTYPE html>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ page language="java" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
 <html>
 <head>
-    <script src="../../js/jquery-3.2.1.min.js"></script>
-    <link href="../../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <link href="../../css/back/style.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="css/back/style.css" rel="stylesheet">
     <script>
         //预先定义判断输入框的函数方便后面使用
 
@@ -80,5 +80,3 @@
 </head>
 <body>
 
-</body>
-</html>
