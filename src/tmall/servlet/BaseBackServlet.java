@@ -91,7 +91,7 @@ public abstract class BaseBackServlet extends HttpServlet {
           InputStream is=null;
           try{
               DiskFileItemFactory factory=new DiskFileItemFactory();
-              ServletFileUpload upload=new ServletFileUpload();
+              ServletFileUpload upload=new ServletFileUpload(factory);
               factory.setSizeThreshold(1024*10240);
               List items=upload.parseRequest(request);
               Iterator iter=items.iterator();

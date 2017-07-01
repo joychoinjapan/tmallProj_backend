@@ -71,18 +71,71 @@ public class CategoryServlet extends BaseBackServlet {
 
     @Override
     public String delete(HttpServletRequest request, HttpServletResponse response, Page page) {
-        return null;
+        int id=Integer.parseInt(request.getParameter("id"));
+        categoryDAO.delete(id);
+        return "@admin_category_list";
     }
 
     @Override
     public String edit(HttpServletRequest request, HttpServletResponse response, Page page) {
-        return null;
+        int id=Integer.parseInt(request.getParameter("id"));
+        Category c=categoryDAO.get(id);
+        request.setAttribute("c",c);
+        return "admin/editCategory.jsp";
     }
 
     @Override
+
     public String update(HttpServletRequest request, HttpServletResponse response, Page page) {
-        return null;
+        Map<String,String> params=new HashMap<>();
+        //通过parseUpload获取文件的输入流
+        InputStream is=super.parseUpload(request,params);
+        System.out.println(params);
+        //获取文件名
+        String name=params.get("name");
+        int id=Integer.parseInt(params.get("id"));
+
+        Category c=new Category();
+        c.setId(id);
+        c.setName(name);
+        //向数据库中更新数据。
+        categoryDAO.update(c);
+
+        //定位到存放分类图片的目录
+        File imageFolder=new File(request.getSession().getServletContext().getRealPath("img/category"));
+
+        File file=new File(imageFolder,c.getId()+".jpg");
+        file.getParentFile().mkdirs();
+
+        try{
+            //如果通过parseUpload 获取到的输入流是空的，或者其中的可取字节数为0，那么就不进行上传处理
+            if(is!=null&&is.available()!=0){
+                //把浏览器提交的文件复制到目标文件
+                try(FileOutputStream fos=new FileOutputStream(file)){
+                    byte b[]=new byte[1024*1024];
+                    int length=0;
+                    while((length=is.read(b))!=-1){
+                        fos.write(b,0,length);
+
+                    }
+                    fos.flush();
+                    //把文件保存为jpg格式
+                    BufferedImage img=ImageUtil.change2jpg(file);
+                    ImageIO.write(img,"jpg",file);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return "@admin_category_list";
+
+
+
     }
+
 
     @Override
     public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
