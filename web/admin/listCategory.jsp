@@ -32,6 +32,7 @@
 					<th>ID</th>
 					<th>图片</th>
 					<th>分类</th>
+					<th>属性管理</th>
 					<th>产品管理</th>
 					<th>编辑</th>
 					<th>删除</th>
@@ -50,7 +51,7 @@
 					<%--编辑分类--%>
 					<td><a href="admin_category_edit?id=${c.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
 					<%--删除分类--%>
-					<td><a deleteLink="true" href="admin_category_delete?id=${c.id}"><span class="   glyphicon glyphicon-trash"></span></a></td>
+					<td><a deleteLink="true" href="admin_category_delete?id=${c.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
 
 				</tr>
 				</c:forEach>
