@@ -44,6 +44,13 @@ public class ProductDAO {
             ps.setInt(5,bean.getStock());
             ps.setInt(6,bean.getCategory().getId());
             ps.setTimestamp(7,DateUtil.d2t(bean.getCreateDate()));
+            ps.execute();
+
+            ResultSet rs=ps.getGeneratedKeys();
+            if(rs.next()){
+                int id=rs.getInt(1);
+                bean.setId(id);
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }
