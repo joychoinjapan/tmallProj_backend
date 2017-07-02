@@ -55,7 +55,7 @@
                     </tr>
                     <tr>
                         <td>优惠价格</td>
-                        <td><input id="promotePrice" value="19.98" value="${promotePrice}" name="originalPrice" type="text" class="form-control"></td>
+                        <td><input id="promotePrice" value="19.98" value="${p.promotePrice}" name="promotePrice" type="text" class="form-control"></td>
                     </tr>
                     <tr>
                         <td>库存</td>
