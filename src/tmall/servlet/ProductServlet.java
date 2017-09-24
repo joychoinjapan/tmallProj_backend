@@ -1,8 +1,6 @@
 package tmall.servlet;
 
-import tmall.bean.Category;
-import tmall.bean.Product;
-import tmall.bean.Property;
+import tmall.bean.*;
 import tmall.util.Page;
 
 import javax.servlet.ServletException;
@@ -104,10 +102,29 @@ public class ProductServlet extends BaseBackServlet {
         request.setAttribute("ps",ps);
         request.setAttribute("c",c);
         request.setAttribute("page",page);
-
-
-
-
         return "admin/listProduct.jsp";
+    }
+
+    public String editPropertyValue(HttpServletRequest request, HttpServletResponse response, Page page){
+        int id=Integer.parseInt(request.getParameter("id"));
+        Product p=productDAO.get(id);
+        request.setAttribute("p",p);
+
+        propertyValueDAO.init(p);
+        List<PropertyValue> pvs=propertyValueDAO.list(p.getId());
+        request.setAttribute("pvs",pvs);
+
+        return "admin/editProductValue.jsp";
+
+    }
+
+    public String updatePropertyValue(HttpServletRequest request, HttpServletResponse response, Page page){
+        int pvid=Integer.parseInt(request.getParameter("pvid"));
+        String value=request.getParameter("value");
+        PropertyValue pv=propertyValueDAO.get(pvid);
+        pv.setValue(value);
+        propertyValueDAO.update(pv);
+        return "%success";
+
     }
 }

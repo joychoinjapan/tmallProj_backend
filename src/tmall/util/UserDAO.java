@@ -150,7 +150,7 @@ public class UserDAO {
                 User bean=new User();
                 int id=rs.getInt(1);
                 String name=rs.getString("name");
-                String password=rs.getString("String");
+                String password=rs.getString("password");
                 bean.setPassword(password);
                 bean.setName(name);
                 bean.setId(id);

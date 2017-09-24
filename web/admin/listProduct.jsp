@@ -32,7 +32,7 @@
 <div class="workingArea">
     <ol class="breadcrumb">
         <li><a href="admin_category_list">所有分类</a></li>
-        <li><a href="admin_category_list?cid=${c.id}">${c.name}</a></li>
+        <li><a href="admin_product_list?cid=${c.id}">${c.name}</a></li>
         <li class="active">产品管理</li>
     </ol>
     <div class="listDataTableDiv">
@@ -67,7 +67,7 @@
                     <td>${p.originalPrice}</td>
                     <td>${p.promotePrice}</td>
                     <td>${p.stock}</td>
-                    <td><a href="admin_productImage_List?pid=${p.id}"><span class="glyphicon glyphicon-picture"></span></a></td>
+                    <td><a href="admin_productImage_list?pid=${p.id}"><span class="glyphicon glyphicon-picture"></span></a></td>
                     <td><a href="admin_product_editPropertyValue?id=${p.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
                     <td><a href="admin_product_edit?id=${p.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
                     <td><a href="admin_product_delete?id=${p.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
